@@ -73,13 +73,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(Platform)</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)\$(Platform)</IntDir>
-    <IncludePath>$(ProjectDir)include\libraries\glm;$(ProjectDir)include\libraries\imgui;$(ProjectDir)include\libraries\SDL;$(ProjectDir)include\libraries\entt;$(ProjectDir)include\libraries;$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)include\libraries\spdlog;$(ProjectDir)include\libraries\glm;$(ProjectDir)include\libraries\imgui;$(ProjectDir)include\libraries\SDL;$(ProjectDir)include\libraries\entt;$(ProjectDir)include\libraries;$(ProjectDir)include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)external;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)bin\$(Configuration)\$(Platform)</OutDir>
     <IntDir>$(SolutionDir)build\$(Configuration)\$(Platform)</IntDir>
-    <IncludePath>$(ProjectDir)include\libraries\glm;$(ProjectDir)include\libraries\imgui;$(ProjectDir)include\libraries\SDL;$(ProjectDir)include\libraries\entt;$(ProjectDir)include\libraries;$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)include\libraries\spdlog;$(ProjectDir)include\libraries\glm;$(ProjectDir)include\libraries\imgui;$(ProjectDir)include\libraries\SDL;$(ProjectDir)include\libraries\entt;$(ProjectDir)include\libraries;$(ProjectDir)include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)external;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -530,6 +530,110 @@
     <ClInclude Include="include\libraries\SDL\SDL_version.h" />
     <ClInclude Include="include\libraries\SDL\SDL_video.h" />
     <ClInclude Include="include\libraries\SDL\SDL_vulkan.h" />
+    <ClInclude Include="include\libraries\spdlog\async.h" />
+    <ClInclude Include="include\libraries\spdlog\async_logger-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\async_logger.h" />
+    <ClInclude Include="include\libraries\spdlog\cfg\argv.h" />
+    <ClInclude Include="include\libraries\spdlog\cfg\env.h" />
+    <ClInclude Include="include\libraries\spdlog\cfg\helpers-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\cfg\helpers.h" />
+    <ClInclude Include="include\libraries\spdlog\common-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\common.h" />
+    <ClInclude Include="include\libraries\spdlog\details\backtracer-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\details\backtracer.h" />
+    <ClInclude Include="include\libraries\spdlog\details\circular_q.h" />
+    <ClInclude Include="include\libraries\spdlog\details\console_globals.h" />
+    <ClInclude Include="include\libraries\spdlog\details\file_helper-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\details\file_helper.h" />
+    <ClInclude Include="include\libraries\spdlog\details\fmt_helper.h" />
+    <ClInclude Include="include\libraries\spdlog\details\log_msg-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\details\log_msg.h" />
+    <ClInclude Include="include\libraries\spdlog\details\log_msg_buffer-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\details\log_msg_buffer.h" />
+    <ClInclude Include="include\libraries\spdlog\details\mpmc_blocking_q.h" />
+    <ClInclude Include="include\libraries\spdlog\details\null_mutex.h" />
+    <ClInclude Include="include\libraries\spdlog\details\os-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\details\os.h" />
+    <ClInclude Include="include\libraries\spdlog\details\periodic_worker-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\details\periodic_worker.h" />
+    <ClInclude Include="include\libraries\spdlog\details\registry-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\details\registry.h" />
+    <ClInclude Include="include\libraries\spdlog\details\synchronous_factory.h" />
+    <ClInclude Include="include\libraries\spdlog\details\tcp_client-windows.h" />
+    <ClInclude Include="include\libraries\spdlog\details\tcp_client.h" />
+    <ClInclude Include="include\libraries\spdlog\details\thread_pool-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\details\thread_pool.h" />
+    <ClInclude Include="include\libraries\spdlog\details\udp_client-windows.h" />
+    <ClInclude Include="include\libraries\spdlog\details\udp_client.h" />
+    <ClInclude Include="include\libraries\spdlog\details\windows_include.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\bin_to_hex.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\bundled\args.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\bundled\chrono.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\bundled\color.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\bundled\compile.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\bundled\core.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\bundled\format-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\bundled\format.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\bundled\locale.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\bundled\os.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\bundled\ostream.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\bundled\printf.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\bundled\ranges.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\bundled\std.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\bundled\xchar.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\chrono.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\compile.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\fmt.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\ostr.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\ranges.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\std.h" />
+    <ClInclude Include="include\libraries\spdlog\fmt\xchar.h" />
+    <ClInclude Include="include\libraries\spdlog\formatter.h" />
+    <ClInclude Include="include\libraries\spdlog\fwd.h" />
+    <ClInclude Include="include\libraries\spdlog\logger-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\logger.h" />
+    <ClInclude Include="include\libraries\spdlog\mdc.h" />
+    <ClInclude Include="include\libraries\spdlog\pattern_formatter-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\pattern_formatter.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\android_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\ansicolor_sink-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\ansicolor_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\base_sink-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\base_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\basic_file_sink-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\basic_file_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\callback_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\daily_file_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\dist_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\dup_filter_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\hourly_file_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\kafka_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\mongo_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\msvc_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\null_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\ostream_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\qt_sinks.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\ringbuffer_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\rotating_file_sink-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\rotating_file_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\sink-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\stdout_color_sinks-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\stdout_color_sinks.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\stdout_sinks-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\stdout_sinks.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\syslog_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\systemd_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\tcp_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\udp_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\wincolor_sink-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\wincolor_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\sinks\win_eventlog_sink.h" />
+    <ClInclude Include="include\libraries\spdlog\spdlog-inl.h" />
+    <ClInclude Include="include\libraries\spdlog\spdlog.h" />
+    <ClInclude Include="include\libraries\spdlog\stopwatch.h" />
+    <ClInclude Include="include\libraries\spdlog\tweakme.h" />
+    <ClInclude Include="include\libraries\spdlog\version.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\libraries\glm\detail\func_common.inl" />
