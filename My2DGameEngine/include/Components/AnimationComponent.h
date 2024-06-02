@@ -13,3 +13,4 @@ struct AnimationComponent {
 	AnimationComponent(const int numFrames, const int animationSpeed, const bool isLooping) 
 		: numFrames{numFrames}, animationSpeed{animationSpeed}, isLooping{isLooping} {}
 };
+using Animation = AnimationComponent;

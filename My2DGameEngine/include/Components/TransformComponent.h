@@ -1,5 +1,5 @@
 #pragma once
-#include <glm/glm.hpp>
+#include <glm.hpp>
 
 struct TransformComponent {
     glm::vec2 position{0.0f, 0.0f};
@@ -10,3 +10,4 @@ struct TransformComponent {
     TransformComponent(const glm::vec2& position, const glm::vec2& scale)
         : position{position}, scale{scale} {}
 };
+using Transform = TransformComponent;

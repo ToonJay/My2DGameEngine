@@ -11,11 +11,11 @@ public:
 	RenderSystem() = default;
 
 	static void Update(SDL_Renderer* renderer, std::unique_ptr<entt::registry>& registry, std::unique_ptr<AssetManager>& assetManager) {
-		auto view = registry->view<TransformComponent, SpriteComponent>();
+		auto view = registry->view<Transform, Sprite>();
 
 		for (auto entity : view) {
-			auto& transform = view.get<TransformComponent>(entity);
-			auto& sprite = view.get<SpriteComponent>(entity);
+			auto& transform = view.get<Transform>(entity);
+			auto& sprite = view.get<Sprite>(entity);
 
 			SDL_Rect srcRect = sprite.srcRect;
 

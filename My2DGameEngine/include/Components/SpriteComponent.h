@@ -15,5 +15,6 @@ struct SpriteComponent {
     SpriteComponent() = default;
 
     SpriteComponent(const std::string& assetId, const int width, const int height, const SDL_RendererFlip& flip, const int zIndex, const bool isFixed, const int srcRectX, const int srcRectY)
-        : assetId{assetId}, width{width}, height{height}, srcRect{srcRectX, srcRectY, width, height}, flip{flip}, zIndex {zIndex}, isFixed{isFixed} {}
+        : assetId{assetId}, width {width}, height{height}, srcRect{srcRectX, srcRectY, width, height}, flip{flip}, zIndex{zIndex}, isFixed{isFixed} {}
 };
+using Sprite = SpriteComponent;
