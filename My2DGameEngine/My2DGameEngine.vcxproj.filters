@@ -1494,7 +1494,7 @@
     <ClInclude Include="include\Components\BoxColliderComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Systems\PlayerControllerSystem.h">
+    <ClInclude Include="include\Systems\PlayerControlsSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Systems\RenderColliderSystem.h">
@@ -1518,10 +1518,19 @@
     <ClInclude Include="include\Events\KeyPressEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Components\PlayerTagComponent.h">
+    <ClInclude Include="include\Components\TagComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Events\KeyReleaseEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Components\PlayerControllerComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Systems\CollisionSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Components\PlayerTagComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -13,8 +13,8 @@ private:
 	bool isDebug{false};
 	float deltaTime{0.0};
 	int previousFrameTime{0};
-	int screenWidth{640};
-	int screenHeight{480};
+	int screenWidth{1280};
+	int screenHeight{960};
 	int virtualWidth{640};
 	int virtualHeight{480};
 

@@ -8,8 +8,6 @@
 
 class RenderSystem {
 public:
-	RenderSystem() = default;
-
 	static void Update(SDL_Renderer* renderer, std::unique_ptr<entt::registry>& registry, std::unique_ptr<AssetManager>& assetManager) {
 		auto view = registry->view<Transform, Sprite>();
 

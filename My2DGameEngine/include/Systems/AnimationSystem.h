@@ -16,7 +16,7 @@ public:
 			auto& animation = view.get<Animation>(entity);
 			auto& sprite = view.get<Sprite>(entity);
 
-			animation.currentFrame = (SDL_GetTicks() - animation.startTime) * animation.animationSpeed / 1000 % animation.numFrames;
+			animation.currentFrame = (SDL_GetTicks() - animation.startTime) * animation.currentAnimationSpeed / 1000 % animation.numFrames;
 			sprite.srcRect.x = animation.currentFrame * sprite.width;
 		}
 	}
