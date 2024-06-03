@@ -49,6 +49,7 @@ public:
 			}
 
 			if (jumping && collider.isGrounded) {
+				playerController.jumpTime = SDL_GetTicks();
 				rigidBody.velocity.y = -200;
 				rigidBody.gravityEnabled = false;
 			}
@@ -91,6 +92,7 @@ public:
 
 			if (!jumping && !collider.isGrounded) {
 				rigidBody.gravityEnabled = true;
+				rigidBody.velocity.y = 0;
 			}
 		}
 	}

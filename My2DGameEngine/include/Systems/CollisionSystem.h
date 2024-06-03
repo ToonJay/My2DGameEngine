@@ -22,15 +22,16 @@ public:
 		for (auto player : playerView) {
 			auto& playerTransform = playerView.get<Transform>(player);
 			auto& playerCollider = playerView.get<BoxCollider>(player);
-			
+			bool isGrounded{false};
+
 			for (auto other : registry->view<BoxCollider>()) {
 				if (other == player) {
 					continue;
 				}
 				auto& otherTransform = registry->get<Transform>(other);
 				auto& otherCollider = registry->get<BoxCollider>(other);
-				
-				bool isGrounded = AABBCollisionCheck(
+
+				isGrounded = AABBCollisionCheck(
 					playerTransform.position.x + (playerCollider.offset.x + 1) * playerTransform.scale.x,
 					playerTransform.position.y + playerCollider.height * playerTransform.scale.y,
 					(playerCollider.width - playerCollider.offset.x - 1) * playerTransform.scale.x - 1,
@@ -40,12 +41,16 @@ public:
 					otherCollider.width * otherTransform.scale.x,
 					2 * otherTransform.scale.y
 				);
-				
+
 				if (isGrounded) {
 					playerCollider.isGrounded = isGrounded;
 					eventBus->EmitEvent<CollisionEvent>(registry, player, other);
+					break;
 				}
-				
+
+			}
+			if (!isGrounded) {
+				playerCollider.isGrounded = false;
 			}
 		}
 	}

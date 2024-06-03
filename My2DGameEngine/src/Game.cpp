@@ -38,6 +38,7 @@ void Game::Initialize() {
 
 void Game::Setup() {
 	assetManager->AddTexture(renderer.get(), "bunny-image", "./assets/images/bunny.png");
+	assetManager->AddTexture(renderer.get(), "bunny-jump", "./assets/images/bunny-jump.png");
 	assetManager->AddTexture(renderer.get(), "tile", "./assets/tilemaps/tilemap_packed.png");
 
 	const entt::entity entity = registry->create();
@@ -50,75 +51,75 @@ void Game::Setup() {
 	registry->emplace<Tag>(entity, "player");
 	registry->emplace<PlayerController>(entity);
 
-	const entt::entity tile = registry->create();
-	registry->emplace<Transform>(tile, glm::vec2(500, virtualHeight / 2), glm::vec2(2.0, 2.0));
-	registry->emplace<Sprite>(tile, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 144, 16);
-	registry->emplace<BoxCollider>(tile, 16, 16, glm::vec2(0, 0));
-	registry->emplace<Tag>(tile, "tile");
+	//const entt::entity tile = registry->create();
+	//registry->emplace<Transform>(tile, glm::vec2(500, virtualHeight / 2), glm::vec2(2.0, 2.0));
+	//registry->emplace<Sprite>(tile, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 144, 16);
+	//registry->emplace<BoxCollider>(tile, 16, 16, glm::vec2(0, 0));
+	//registry->emplace<Tag>(tile, "tile");
 
 	const entt::entity tile2 = registry->create();
 	registry->emplace<Transform>(tile2, glm::vec2(500, virtualHeight / 2 + 32), glm::vec2(2.0, 2.0));
-	registry->emplace<Sprite>(tile2, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 144, 16);
+	registry->emplace<Sprite>(tile2, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 64, 0);
 	registry->emplace<BoxCollider>(tile2, 16, 16, glm::vec2(0, 0));
 	registry->emplace<Tag>(tile2, "tile");
 
 	const entt::entity tile3 = registry->create();
 	registry->emplace<Transform>(tile3, glm::vec2(468, virtualHeight / 2 + 32), glm::vec2(2.0, 2.0));
-	registry->emplace<Sprite>(tile3, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 144, 16);
+	registry->emplace<Sprite>(tile3, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 64, 0);
 	registry->emplace<BoxCollider>(tile3, 16, 16, glm::vec2(0, 0));
 	registry->emplace<Tag>(tile3, "tile");
 
 	const entt::entity tile4 = registry->create();
 	registry->emplace<Transform>(tile4, glm::vec2(436, virtualHeight / 2 + 32), glm::vec2(2.0, 2.0));
-	registry->emplace<Sprite>(tile4, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 144, 16);
+	registry->emplace<Sprite>(tile4, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 64, 0);
 	registry->emplace<BoxCollider>(tile4, 16, 16, glm::vec2(0, 0));
 	registry->emplace<Tag>(tile4, "tile");
 
 	const entt::entity tile5 = registry->create();
 	registry->emplace<Transform>(tile5, glm::vec2(404, virtualHeight / 2 + 32), glm::vec2(2.0, 2.0));
-	registry->emplace<Sprite>(tile5, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 144, 16);
+	registry->emplace<Sprite>(tile5, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 64, 0);
 	registry->emplace<BoxCollider>(tile5, 16, 16, glm::vec2(0, 0));
 	registry->emplace<Tag>(tile5, "tile");
 
 	const entt::entity tile6 = registry->create();
 	registry->emplace<Transform>(tile6, glm::vec2(372, virtualHeight / 2 + 32), glm::vec2(2.0, 2.0));
-	registry->emplace<Sprite>(tile6, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 144, 16);
+	registry->emplace<Sprite>(tile6, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 64, 0);
 	registry->emplace<BoxCollider>(tile6, 16, 16, glm::vec2(0, 0));
 	registry->emplace<Tag>(tile6, "tile");
 
 	const entt::entity tile7 = registry->create();
 	registry->emplace<Transform>(tile7, glm::vec2(340, virtualHeight / 2 + 32), glm::vec2(2.0, 2.0));
-	registry->emplace<Sprite>(tile7, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 144, 16);
+	registry->emplace<Sprite>(tile7, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 64, 0);
 	registry->emplace<BoxCollider>(tile7, 16, 16, glm::vec2(0, 0));
 	registry->emplace<Tag>(tile7, "tile");
 
 	const entt::entity tile8 = registry->create();
 	registry->emplace<Transform>(tile8, glm::vec2(276, virtualHeight / 2 + 32), glm::vec2(2.0, 2.0));
-	registry->emplace<Sprite>(tile8, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 144, 16);
+	registry->emplace<Sprite>(tile8, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 64, 0);
 	registry->emplace<BoxCollider>(tile8, 16, 16, glm::vec2(0, 0));
 	registry->emplace<Tag>(tile8, "tile");
 
 	const entt::entity tile9 = registry->create();
 	registry->emplace<Transform>(tile9, glm::vec2(244, virtualHeight / 2 + 32), glm::vec2(2.0, 2.0));
-	registry->emplace<Sprite>(tile9, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 144, 16);
+	registry->emplace<Sprite>(tile9, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 64, 0);
 	registry->emplace<BoxCollider>(tile9, 16, 16, glm::vec2(0, 0));
 	registry->emplace<Tag>(tile9, "tile");
 
 	const entt::entity tile10 = registry->create();
 	registry->emplace<Transform>(tile10, glm::vec2(212, virtualHeight / 2 + 32), glm::vec2(2.0, 2.0));
-	registry->emplace<Sprite>(tile10, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 144, 16);
+	registry->emplace<Sprite>(tile10, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 64, 0);
 	registry->emplace<BoxCollider>(tile10, 16, 16, glm::vec2(0, 0));
 	registry->emplace<Tag>(tile10, "tile");
 
 	const entt::entity tile11 = registry->create();
 	registry->emplace<Transform>(tile11, glm::vec2(180, virtualHeight / 2 + 32), glm::vec2(2.0, 2.0));
-	registry->emplace<Sprite>(tile11, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 144, 16);
+	registry->emplace<Sprite>(tile11, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 64, 0);
 	registry->emplace<BoxCollider>(tile11, 16, 16, glm::vec2(0, 0));
 	registry->emplace<Tag>(tile11, "tile");
 
 	const entt::entity tile12 = registry->create();
 	registry->emplace<Transform>(tile12, glm::vec2(308, virtualHeight / 2 + 32), glm::vec2(2.0, 2.0));
-	registry->emplace<Sprite>(tile12, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 144, 16);
+	registry->emplace<Sprite>(tile12, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 64, 0);
 	registry->emplace<BoxCollider>(tile12, 16, 16, glm::vec2(0, 0));
 	registry->emplace<Tag>(tile12, "tile");
 
@@ -128,11 +129,11 @@ void Game::Setup() {
 	////registry->emplace<BoxCollider>(tile13, 16, 16, glm::vec2(0, 0));
 	///registry->emplace<Tag>(tile13, "tile");
 
-	const entt::entity tile14 = registry->create();
-	registry->emplace<Transform>(tile14, glm::vec2(500, virtualHeight / 2 - 32), glm::vec2(2.0, 2.0));
-	registry->emplace<Sprite>(tile14, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 144, 16);
-	registry->emplace<BoxCollider>(tile14, 16, 16, glm::vec2(0, 0));
-	registry->emplace<Tag>(tile14, "tile");
+	//const entt::entity tile14 = registry->create();
+	//registry->emplace<Transform>(tile14, glm::vec2(500, virtualHeight / 2 - 32), glm::vec2(2.0, 2.0));
+	//registry->emplace<Sprite>(tile14, "tile", 16, 16, SDL_FLIP_NONE, 0, true, 144, 16);
+	//registry->emplace<BoxCollider>(tile14, 16, 16, glm::vec2(0, 0));
+	//registry->emplace<Tag>(tile14, "tile");
 }
 
 void Game::ProcessInput() {

@@ -38,8 +38,8 @@ public:
             aTransform.position.y < bTransform.position.y + (bCollider.height * bTransform.scale.y)) {
 
             // Determine the direction of collision on y-axis
-            float overlapTop = (aTransform.position.y + (aCollider.height * aTransform.scale.y)) - bTransform.position.y;
-            float overlapBottom = (bTransform.position.y + (bCollider.height * bTransform.scale.y)) - aTransform.position.y;
+            float overlapTop = (aTransform.position.y + 3 + (aCollider.height * aTransform.scale.y)) - bTransform.position.y;
+            float overlapBottom = (bTransform.position.y + 3 + (bCollider.height * bTransform.scale.y)) - aTransform.position.y;
 
             // Adjust player's position based on the smaller overlap (y-axis)
             if (overlapTop < overlapBottom && aRigidBody.velocity.y > 0) {
@@ -52,18 +52,18 @@ public:
             }
 
             // Check for collision between scaled colliders on x-axis
-            float overlapLeft = (aTransform.position.x + (aCollider.width * aTransform.scale.x)) - bTransform.position.x;
-            float overlapRight = (bTransform.position.x + (bCollider.width * bTransform.scale.x)) - aTransform.position.x;
+          //  float overlapLeft = (aTransform.position.x + (aCollider.width * aTransform.scale.x)) - bTransform.position.x;
+          //  float overlapRight = (bTransform.position.x + (bCollider.width * bTransform.scale.x)) - aTransform.position.x;
 
             // Adjust player's position based on the smaller overlap (x-axis)
-            if (overlapLeft < overlapRight && aRigidBody.velocity.x > 0) {
-                aTransform.position.x -= overlapLeft;
-                aRigidBody.velocity.x = 0;
-            }
-            if (overlapLeft> overlapRight && aRigidBody.velocity.x < 0) {
-                aTransform.position.x += overlapRight;
-                aRigidBody.velocity.x = 0;
-            }
+           // if (overlapLeft < overlapRight && aRigidBody.velocity.x > 0) {
+           //     aTransform.position.x -= overlapLeft;
+           //     aRigidBody.velocity.x = 0;
+           // }
+           // if (overlapLeft> overlapRight && aRigidBody.velocity.x < 0) {
+            //    aTransform.position.x += overlapRight;
+            //    aRigidBody.velocity.x = 0;
+            //}
         }
 	}
 
@@ -75,9 +75,11 @@ public:
 			auto& transform = view.get<Transform>(entity);
 
             if (registry->get<Tag>(entity).tag == "player") {
-                if (rigidBody.gravityEnabled && !registry->get<BoxCollider>(entity).isGrounded) {
-                    rigidBody.velocity.y = 50;
-                } else {
+                if ((rigidBody.gravityEnabled && !registry->get<BoxCollider>(entity).isGrounded && !registry->get<PlayerController>(entity).activeKeys.count(SDLK_SPACE))
+                    || (registry->get<PlayerController>(entity).jumpTime > 0 && SDL_GetTicks() - registry->get<PlayerController>(entity).jumpTime > 300) &&
+                    registry->get<PlayerController>(entity).activeKeys.count(SDLK_SPACE)) {
+                    rigidBody.velocity.y = 100;
+                } else if (registry->get<BoxCollider>(entity).isGrounded && !registry->get<PlayerController>(entity).activeKeys.count(SDLK_SPACE)) {
                     rigidBody.velocity.y = 0;
                 }
             } 
