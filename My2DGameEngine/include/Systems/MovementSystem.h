@@ -76,9 +76,9 @@ public:
 
             if (registry->get<Tag>(entity).tag == "player") {
                 if ((rigidBody.gravityEnabled && !registry->get<BoxCollider>(entity).isGrounded && !registry->get<PlayerController>(entity).activeKeys.count(SDLK_SPACE))
-                    || (registry->get<PlayerController>(entity).jumpTime > 0 && SDL_GetTicks() - registry->get<PlayerController>(entity).jumpTime > 300) &&
+                    || (registry->get<PlayerController>(entity).jumpTime > 0 && SDL_GetTicks() - registry->get<PlayerController>(entity).jumpTime > 500) &&
                     registry->get<PlayerController>(entity).activeKeys.count(SDLK_SPACE)) {
-                    rigidBody.velocity.y = 100;
+                    rigidBody.velocity.y = 200;
                 } else if (registry->get<BoxCollider>(entity).isGrounded && !registry->get<PlayerController>(entity).activeKeys.count(SDLK_SPACE)) {
                     rigidBody.velocity.y = 0;
                 }
